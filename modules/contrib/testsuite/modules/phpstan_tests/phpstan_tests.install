@@ -1,0 +1,97 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the PHPStan Tests module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function phpstan_tests_schema() {
+  if (\Drupal::database()->schema()->tableExists('phpstan_test_item')) {
+    \Drupal::database()->truncate('phpstan_test_item')->execute();
+    \Drupal::database()->schema()->dropTable('phpstan_test_item');
+  }
+
+  $schema['phpstan_test_item'] = [
+    'description' => 'Stores the phpstan test items.',
+    'fields' => [
+      'id' => [
+        'description' => 'The ID of this item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'level' => [
+        'description' => 'The level selected when tested',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ],
+      'area' => [
+        'description' => 'Core, Contrib or Custom',
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => TRUE,
+      ],
+      'module' => [
+        'description' => 'The module',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'line_number' => [
+        'description' => 'The line number of the error',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'file_checked' => [
+        'description' => 'The file checked',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'ignore' => [
+        'description' => 'Whether you can ignore or not',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ],
+      'error_report' => [
+        'description' => 'The error reported',
+        'type' => 'text',
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'A timestamp indicating when the item was created',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'indexing' => ['id', 'created'],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function phpstan_tests_uninstall() {
+  if (\Drupal::database()->schema()->tableExists('phpstan_test_item')) {
+    \Drupal::database()->truncate('phpstan_test_item')->execute();
+    \Drupal::database()->schema()->dropTable('phpstan_test_item');
+  }
+
+  // Delete sessions.
+  if (\Drupal::request()->hasSession()) {
+    \Drupal::request()->getSession()->remove('phpstan_tests_overview_filter');
+  }
+
+  // Delete config in key values.
+  \Drupal::keyValue("system.schema")->delete("phpstan_tests");
+}

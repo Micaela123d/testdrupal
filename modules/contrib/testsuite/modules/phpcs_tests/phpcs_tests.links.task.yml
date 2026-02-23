@@ -1,0 +1,8 @@
+phpcs_tests.view_logs:
+  title: 'View'
+  route_name: phpcs_tests.phpcs_report
+  base_route: phpcs_tests.phpcs_report
+phpcs_tests.clear_logs:
+  title: 'Delete'
+  route_name: phpcs_tests.confirm
+  base_route: phpcs_tests.phpcs_report

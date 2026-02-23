@@ -1,0 +1,8 @@
+phpstan_tests.view_logs:
+  title: 'View'
+  route_name: phpstan_tests.phpstan_report
+  base_route: phpstan_tests.phpstan_report
+phpstan_tests.clear_logs:
+  title: 'Delete'
+  route_name: phpstan_tests.confirm
+  base_route: phpstan_tests.phpstan_report

@@ -1,0 +1,179 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for malla_curricular module.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_schema().
+ */
+function malla_curricular_schema() {
+  $schema = [];
+
+  // Tabla de carreras
+  $schema['carreras'] = [
+    'description' => 'Almacena las carreras disponibles',
+    'fields' => [
+      'id_carrera' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'ID único de la carrera',
+      ],
+      'nombre' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Nombre de la carrera',
+      ],
+      'codigo' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'description' => 'Código de la carrera',
+      ],
+      'duracion_semestres' => [
+        'type' => 'int',
+        'size' => 'small',
+        'not null' => TRUE,
+        'default' => 10,
+        'description' => 'Duración en semestres',
+      ],
+    ],
+    'primary key' => ['id_carrera'],
+  ];
+
+  // Tabla de cursos
+  $schema['cursos'] = [
+    'description' => 'Almacena los cursos de la malla curricular',
+    'fields' => [
+      'id_curso' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'ID único del curso',
+      ],
+      'id_carrera' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'ID de la carrera',
+      ],
+      'codigo_curso' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'description' => 'Código del curso',
+      ],
+      'nombre' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Nombre del curso',
+      ],
+      'semestre' => [
+        'type' => 'int',
+        'size' => 'small',
+        'not null' => TRUE,
+        'description' => 'Semestre en que se imparte',
+      ],
+      'creditos' => [
+        'type' => 'int',
+        'size' => 'small',
+        'not null' => TRUE,
+        'description' => 'Créditos del curso',
+      ],
+      'tipo' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'default' => 'Obligatorio',
+        'description' => 'Tipo: Obligatorio, Electivo, etc.',
+      ],
+      'prerequisitos' => [
+        'type' => 'text',
+        'size' => 'normal',
+        'description' => 'Prerequisitos del curso',
+      ],
+    ],
+    'primary key' => ['id_curso'],
+    'foreign keys' => [
+      'carrera' => [
+        'table' => 'carreras',
+        'columns' => ['id_carrera' => 'id_carrera'],
+      ],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function malla_curricular_install() {
+  $database = Database::getConnection();
+  
+  // Datos de ejemplo para carreras
+  $carreras = [
+    ['nombre' => 'Ingeniería de Sistemas', 'codigo' => 'IS001', 'duracion_semestres' => 10],
+    ['nombre' => 'Administración de Empresas', 'codigo' => 'AE002', 'duracion_semestres' => 8],
+    ['nombre' => 'Contabilidad', 'codigo' => 'CT003', 'duracion_semestres' => 8],
+  ];
+
+  foreach ($carreras as $carrera) {
+    $database->insert('carreras')
+      ->fields(['nombre', 'codigo', 'duracion_semestres'])
+      ->values($carrera)
+      ->execute();
+  }
+
+  // Datos de ejemplo para cursos
+  $cursos = [
+    // Carrera 1: Ingeniería de Sistemas
+    [1, 'IS101', 'Introducción a la Programación', 1, 4, 'Obligatorio', ''],
+    [1, 'IS102', 'Matemáticas Discretas', 1, 4, 'Obligatorio', ''],
+    [1, 'IS201', 'Estructuras de Datos', 2, 4, 'Obligatorio', 'IS101'],
+    [1, 'IS202', 'Bases de Datos I', 2, 4, 'Obligatorio', 'IS101'],
+    [1, 'IS301', 'Ingeniería de Software', 3, 4, 'Obligatorio', 'IS201'],
+    
+    // Carrera 2: Administración de Empresas
+    [2, 'AE101', 'Introducción a la Administración', 1, 4, 'Obligatorio', ''],
+    [2, 'AE102', 'Matemáticas Financieras', 1, 4, 'Obligatorio', ''],
+    [2, 'AE201', 'Contabilidad General', 2, 4, 'Obligatorio', 'AE101'],
+    
+    // Carrera 3: Contabilidad
+    [3, 'CT101', 'Contabilidad Básica', 1, 4, 'Obligatorio', ''],
+    [3, 'CT102', 'Legislación Comercial', 1, 4, 'Obligatorio', ''],
+  ];
+
+  foreach ($cursos as $curso) {
+    $database->insert('cursos')
+      ->fields(['id_carrera', 'codigo_curso', 'nombre', 'semestre', 'creditos', 'tipo', 'prerequisitos'])
+      ->values([
+        'id_carrera' => $curso[0],
+        'codigo_curso' => $curso[1],
+        'nombre' => $curso[2],
+        'semestre' => $curso[3],
+        'creditos' => $curso[4],
+        'tipo' => $curso[5],
+        'prerequisitos' => $curso[6],
+      ])
+      ->execute();
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function malla_curricular_uninstall() {
+  // Eliminar tablas si es necesario
+  $database = Database::getConnection();
+  $schema = $database->schema();
+  
+  $schema->dropTable('cursos');
+  $schema->dropTable('carreras');
+}

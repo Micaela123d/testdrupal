@@ -1,0 +1,19 @@
+testsuite_mysql_storage_type: 1
+testsuite_mysql_host: 'localhost'
+testsuite_mysql_username: 'root'
+testsuite_mysql_password: ''
+testsuite_mysql_port: 3306
+testsuite_mysql_database_name: ''
+testsuite_simple_base_url: ''
+testsuite_browser_output_directory: ''
+testsuite_browser_output_base_url: ''
+testsuite_disable_deprecation_testing: ''
+testsuite_configure_deprecation_helper: ''
+testsuite_mink_driver_class: ''
+testsuite_mink_driver_args: ''
+testsuite_mink_driver_args_webdriver: ''
+testsuite_loaded_test_types:
+  Unit: Unit
+  Kernel: '0'
+  Functional: Functional
+  FunctionalJavascript: '0'

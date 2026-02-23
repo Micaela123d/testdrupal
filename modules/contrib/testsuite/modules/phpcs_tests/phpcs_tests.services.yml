@@ -1,0 +1,4 @@
+services:
+  phpcs_tests.load_resource.service:
+    class: Drupal\phpcs_tests\PhpcsTestsResourceService
+    arguments: ['@file_system', '@serialization.json']

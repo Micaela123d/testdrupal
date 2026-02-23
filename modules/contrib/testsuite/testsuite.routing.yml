@@ -1,0 +1,32 @@
+testsuite.admin_config_testsuite:
+  path: '/admin/config/testsuite'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Test Suite'
+  requirements:
+    _permission: 'administer site configuration'
+
+testsuite.confirm:
+  path: '/admin/reports/testsuite/confirm'
+  defaults:
+    _form: '\Drupal\testsuite\Form\CustomTestsClearLogConfirmForm'
+    _title: 'Confirm delete recent log messages'
+  requirements:
+    _permission: 'administer site configuration'
+
+testsuite.custom_report:
+  path: '/admin/testsuite/reports'
+  defaults:
+    _controller: '\Drupal\testsuite\Controller\CustomTestsController::overview'
+    _title: 'Custom Tests Report'
+  requirements:
+    _permission: 'administer site configuration'
+
+testsuite.event:
+  path: '/admin/testsuite/reports/event/{event_id}'
+  defaults:
+    _controller: '\Drupal\testsuite\Controller\CustomTestsController::eventDetails'
+    _title: 'Details'
+  requirements:
+    _permission: 'administer site configuration'
+    event_id: '[0-9]+'

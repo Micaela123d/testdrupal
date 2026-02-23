@@ -1,0 +1,21 @@
+.system-status-general-info__item:nth-child(5) {
+  margin-left: 0rem;
+}
+
+@media screen and (min-width: 1200px) {
+  .system-status-general-info__item {
+    width: 32%;
+  }
+  .system-status-general-info__item:nth-child(5) {
+    margin-left: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .system-status-general-info__item {
+    width: 32%;
+  }
+  .system-status-general-info__item:nth-child(5) {
+    margin-left: 2.2rem;
+  }
+}

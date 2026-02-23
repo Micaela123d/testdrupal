@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * This module lets the user run PhpUnit tests and view reports in admin.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function testsuite_help($route_name) {
+  switch ($route_name) {
+    case 'help.page.testsuite':
+      $output = '<h3>' . t('Introduction') . '</h3>';
+      $output .= '<p>' . t('This module is a combination of 5 modules that together let a site admin test their Drupal codebase.') . '</p>';
+      $output .= '<p><b>TestSuite</b>: This the base module and must always be installed for the others to work. Run your own tests that do not require any additional packages. It uses a custom module that you can find in test_module folder. Copy it into the modules/custom folder, erase the .txt on the .info.yml file and enable it. There are example tests in the module.<br />
+      <b>List Packages</b>: A free package validator that looks for vulnerabilities in installed packages. It uses composer.json or package.json file located in the module, theme or library root and needs at least the name of the package and version to run an accurate check.<br />
+      <b>PHPUnit</b>: Run Unit and Functional phpunit tests on modules and themes to check that the code runs as expected.<br />
+      <b>PHPcs</b>: Drupal modules have to go through PHPCs testing to insure they are up to Drupal Standards when submitting a module to drupal.org. This module lets you see if there are any of these violations in the code base.<br />
+      <b>PHPStan</b>: Is another standard to hold your code to ensure that the code base is error free and will run well in the drupal installation.';
+
+      $installVariables = [
+        ':merge' => Url::fromUri('https://github.com/wikimedia/composer-merge-plugin')->toString(),
+        ':installation' => Url::fromUri('https://www.drupal.org/project/testsuite')->toString(),
+      ];
+      $output .= '<h3>' . t('Installation') . '</h3>';
+      $output .= '<p>' . t('This module uses the <a href=":merge">wikimedia/composer-merge-plugin</a>.<br />
+      Complete installation instructions: <a href=":installation">Installation Instruction</a>', $installVariables) . '</p>';
+
+      $output .= '<h3>' . t('Requirements') . '</h3>';
+      $output .= '<p>' . t('A Drupal site installed via composer.') . "</p>";
+
+      $output .= '<h3>' . t('Configuration') . '</h3>';
+      $configVariables = [
+        ':testsuiteconfig' => Url::fromRoute('testsuite.admin_config_testsuite')->toString(),
+      ];
+      $output .= '<p>' . t('List Packages and PHPUnit Tests will have configuration that can be found at <a href=":testsuiteconfig">TestSuite Config</a>.', $configVariables) . '</p>';
+      return $output;
+
+    default:
+  }
+}

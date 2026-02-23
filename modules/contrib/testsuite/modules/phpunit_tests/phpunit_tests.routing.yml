@@ -1,0 +1,108 @@
+phpunit_tests.settings:
+  path: '/admin/config/testsuite/phpunit_tests'
+  defaults:
+    _form: '\Drupal\phpunit_tests\Form\PhpunitConfigurationForm'
+    _title: 'Test Suite PHPUnit configuration screen'
+  requirements:
+    _permission: 'administer site configuration'
+
+phpunit_tests.run_phpunit_test:
+  path: '/admin/phpunit_tests/run/tests'
+  defaults:
+    _form: '\Drupal\phpunit_tests\Form\PhpunitTestsRunTestsMultistepForm'
+    _title: 'Run PHPUnit Tests'
+  requirements:
+    _permission: 'administer site configuration'
+
+phpunit_tests.phpunit_report:
+  path: '/admin/phpunit_tests/reports'
+  defaults:
+    _controller: '\Drupal\phpunit_tests\Controller\PhpunitTestsController::overview'
+    _title: 'PHPUnit Tests Report'
+  requirements:
+    _permission: 'administer site configuration'
+
+phpunit_tests.confirm:
+  path: '/admin/phpunit_tests/reports/confirm'
+  defaults:
+    _form: '\Drupal\phpunit_tests\Form\PhpunitTestsClearLogConfirmForm'
+    _title: 'Confirm delete recent log messages'
+  requirements:
+    _permission: 'administer site configuration'
+
+phpunit_tests.event:
+  path: '/admin/phpunit_tests/reports/event/{event_id}'
+  defaults:
+    _controller: '\Drupal\phpunit_tests\Controller\PhpunitTestsController::eventDetails'
+    _title: 'Details'
+  requirements:
+    _permission: 'administer site configuration'
+    event_id: '[0-9]+'
+
+phpunit_tests.group_report:
+  path: '/admin/phpunit_tests/reports/group'
+  defaults:
+    _controller: '\Drupal\phpunit_tests\Controller\PhpunitTestsGroupController::overview'
+    _title: 'PHPUnit Groups'
+  requirements:
+    _permission: 'administer site configuration'
+
+phpunit_tests.run_tests_group:
+  path: '/admin/phpunit_tests/reports/run/group/tests/{groupid}'
+  defaults:
+    _controller: '\Drupal\phpunit_tests\Controller\PhpunitTestsGroupController::runGroupTests'
+    _title: 'PHPUnit Run Group Tests'
+  requirements:
+    _permission: 'administer site configuration'
+    groupid: '[0-9]+'
+
+phpunit_tests.group_confirm:
+  path: '/admin/phpunit_tests/reports/group/confirm'
+  defaults:
+    _form: '\Drupal\phpunit_tests\Form\PhpunitTestsGroupClearLogConfirmForm'
+    _title: 'Confirm delete recent log messages'
+  requirements:
+    _permission: 'administer site configuration'
+
+phpunit_tests.group_delete_confirm:
+  path: '/admin/phpunit_tests/reports/delete/group/confirm/{id}'
+  defaults:
+    _form: '\Drupal\phpunit_tests\Form\PhpunitTestsDeleteGroupConfirmForm'
+    _title: 'Confirm delete group'
+  requirements:
+    _permission: 'administer site configuration'
+    id: '[0-9]+'
+
+phpunit_tests.group_event:
+  path: '/admin/phpunit_tests/reports/group/event/{event_id}'
+  defaults:
+    _controller: '\Drupal\phpunit_tests\Controller\PhpunitTestsGroupController::eventDetails'
+    _title: 'Details'
+  requirements:
+    _permission: 'administer site configuration'
+    event_id: '[0-9]+'
+
+phpunit_tests.group_item_delete_confirm:
+  path: '/admin/phpunit_tests/reports/delete/group/item/confirm/{id}'
+  defaults:
+    _form: '\Drupal\phpunit_tests\Form\PhpunitTestsDeleteGroupItemConfirmForm'
+    _title: 'Confirm delete group item'
+  requirements:
+    _permission: 'administer site configuration'
+    id: '[0-9]+\-[0-9]+'
+
+phpunit_tests.phpunit_link_test:
+  path: '/admin/phpunit_tests/phpunit/{area}/{module}/{directory}/{file}'
+  defaults:
+    _controller: '\Drupal\phpunit_tests\Controller\PhpunitTestsLinkController::runPhpunitTest'
+    _title: 'PHPUnit Link Test'
+    area: 'contrib'
+    module: 'testsuite'
+    directory: 'Unit'
+    file: null
+  requirements:
+    _permission: 'administer site configuration'
+    area: '[a-z]+'
+    module: '[0-9a-z_]+'
+    directory: '[a-zA-Z]+'
+    file: '[a-zA-Z]+'

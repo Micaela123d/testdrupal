@@ -1,0 +1,214 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the PHPUnit Tests module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function phpunit_tests_schema() {
+  if (\Drupal::database()->schema()->tableExists('phpunit_test')) {
+    \Drupal::database()->truncate('phpunit_test')->execute();
+    \Drupal::database()->schema()->dropTable('phpunit_test');
+  }
+  if (\Drupal::database()->schema()->tableExists('phpunit_test_item')) {
+    \Drupal::database()->truncate('phpunit_test_item')->execute();
+    \Drupal::database()->schema()->dropTable('phpunit_test_item');
+  }
+  if (\Drupal::database()->schema()->tableExists('phpunit_test_group')) {
+    \Drupal::database()->truncate('phpunit_test_group')->execute();
+    \Drupal::database()->schema()->dropTable('phpunit_test_group');
+  }
+  if (\Drupal::database()->schema()->tableExists('phpunit_test_group_item')) {
+    \Drupal::database()->truncate('phpunit_test_group_item')->execute();
+    \Drupal::database()->schema()->dropTable('phpunit_test_group_item');
+  }
+
+  $schema['phpunit_test'] = [
+    'description' => 'Stores the phpunit test items.',
+    'fields' => [
+      'id' => [
+        'description' => 'The ID of this item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'A timestamp indicating when the item was created',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'indexing' => ['id', 'created'],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  $schema['phpunit_test_item'] = [
+    'description' => 'Stores the phpunit test items.',
+    'fields' => [
+      'id' => [
+        'description' => 'The ID of this item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'phpunit_test_id' => [
+        'description' => 'The ID of the phpunit_test this belongs to.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'area' => [
+        'description' => 'Core, Contrib or Custom',
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => TRUE,
+      ],
+      'module' => [
+        'description' => 'The module',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'directory' => [
+        'description' => 'The test directory',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'test' => [
+        'description' => 'The test',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'error_report' => [
+        'description' => 'The error reported',
+        'type' => 'text',
+        'not null' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'indexing' => ['id'],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  $schema['phpunit_test_group'] = [
+    'description' => 'Stores the phpunit test items.',
+    'fields' => [
+      'id' => [
+        'description' => 'The ID of this item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => 'The group name',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'A timestamp indicating when the item was created',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'indexing' => ['id', 'created'],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  $schema['phpunit_test_group_item'] = [
+    'description' => 'Stores the phpunit test items.',
+    'fields' => [
+      'id' => [
+        'description' => 'The ID of this item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'phpunit_test_group_id' => [
+        'description' => 'The ID of the phpunit_test_group this belongs to.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'area' => [
+        'description' => 'Core, Contrib or Custom',
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => TRUE,
+      ],
+      'module' => [
+        'description' => 'The module',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'directory' => [
+        'description' => 'The test directory',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'test' => [
+        'description' => 'The test',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'A timestamp indicating when the item was created',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'indexing' => ['id'],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function phpunit_tests_uninstall() {
+  if (\Drupal::database()->schema()->tableExists('phpunit_test')) {
+    \Drupal::database()->truncate('phpunit_test')->execute();
+    \Drupal::database()->schema()->dropTable('phpunit_test');
+  }
+  if (\Drupal::database()->schema()->tableExists('phpunit_test_item')) {
+    \Drupal::database()->truncate('phpunit_test_item')->execute();
+    \Drupal::database()->schema()->dropTable('phpunit_test_item');
+  }
+  if (\Drupal::database()->schema()->tableExists('phpunit_test_group')) {
+    \Drupal::database()->truncate('phpunit_test_group')->execute();
+    \Drupal::database()->schema()->dropTable('phpunit_test_group');
+  }
+  if (\Drupal::database()->schema()->tableExists('phpunit_test_group_item')) {
+    \Drupal::database()->truncate('phpunit_test_group_item')->execute();
+    \Drupal::database()->schema()->dropTable('phpunit_test_group_item');
+  }
+
+  // Delete sessions.
+  if (\Drupal::request()->hasSession()) {
+    \Drupal::request()->getSession()->remove('phpunit_tests_overview_filter');
+    \Drupal::request()->getSession()->remove('phpunit_tests_group_item_overview_filter');
+  }
+
+  // Delete config in key values.
+  \Drupal::keyValue("system.schema")->delete("phpunit_tests");
+}

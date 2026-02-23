@@ -1,0 +1,6 @@
+user_geo_address.settings:
+  title: 'Maps API Key Configuration'
+  route_name: user_geo_address.settings
+  description: 'Add congiguration key for Google Map'
+  parent: system.admin_config_system
+  weight: 99

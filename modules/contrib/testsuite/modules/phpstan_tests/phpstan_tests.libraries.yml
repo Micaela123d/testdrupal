@@ -1,0 +1,5 @@
+phpstan_tests.filters:
+  version: 1.x
+  css:
+    theme:
+      css/filter_forms.css: {}

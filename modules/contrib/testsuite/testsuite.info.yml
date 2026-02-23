@@ -1,0 +1,16 @@
+name: Test Suite
+description: 'This module creates the ability for the admin to run PHPUnit, PHPcs and PHPStan test and view them as a report.'
+type: module
+package: Test Suite
+core_version_requirement: ^10 || ^11
+configure: testsuite.settings
+
+# Information added by Drupal.org packaging script on 2024-06-24
+# version: '3.0.72-beta1'
+# project: 'testsuite'
+# datestamp: 1719241947
+
+# Information added by Drupal.org packaging script on 2024-11-25
+version: '3.1.0'
+project: 'testsuite'
+datestamp: 1732538905

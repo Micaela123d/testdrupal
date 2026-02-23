@@ -1,0 +1,20 @@
+phpunit_tests.settings:
+  title: 'PHPUnit Config'
+  description: 'Test Suite PHPUnit configuration page.'
+  parent: testsuite.admin_config_testsuite
+  route_name: phpunit_tests.settings
+  weight: 99
+
+phpunit_tests.groups:
+  title: 'PHPUnit Groups'
+  description: 'Test Suite PHPUnit Group page.'
+  parent: testsuite.tests.collection
+  route_name: phpunit_tests.group_report
+  weight: -9
+
+phpunit_tests.tests:
+  title: 'PHPUnit'
+  description: 'Test Suite PHPUnit page.'
+  parent: testsuite.tests.collection
+  route_name: phpunit_tests.phpunit_report
+  weight: -9

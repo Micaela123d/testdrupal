@@ -1,0 +1,7 @@
+name: Custom Tests
+description: 'This is an example module for custom tests.'
+type: module
+package: Test Suite
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:testsuite

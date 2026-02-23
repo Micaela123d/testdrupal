@@ -1,0 +1,51 @@
+phpunit_tests.settings:
+  type: config_object
+  label: 'Test Suite PHPUnit Config'
+  mapping:
+    testsuite_mysql_storage_type:
+      type: integer
+      label: 'Storage Type'
+    testsuite_mysql_host:
+      type: text
+      label: 'Mysql Database Host'
+    testsuite_mysql_username:
+      type: text
+      label: 'Mysql Database Username'
+    testsuite_mysql_password:
+      type: text
+      label: 'Mysql Database Password'
+    testsuite_mysql_port:
+      type: integer
+      label: 'Mysql Database Port'
+    testsuite_mysql_database_name:
+      type: text
+      label: 'Mysql Database DbName'
+    testsuite_simple_base_url:
+      type: text
+      label: 'Drupal Base Url for PHPUnit Tests'
+    testsuite_browser_output_directory:
+      type: text
+      label: 'Browser Output Directory for PHPUnit Tests'
+    testsuite_browser_output_base_url:
+      type: text
+      label: 'Browser Output Base Url for PHPUnit Tests'
+    testsuite_disable_deprecation_testing:
+      type: text
+      label: 'If Disable Depreciation Testing'
+    testsuite_configure_deprecation_helper:
+      type: text
+      label: 'Symfony Deprecations Helper'
+    testsuite_mink_driver_class:
+      type: text
+      label: 'Mink Driver Class'
+    testsuite_mink_driver_args:
+      type: text
+      label: 'Mink Driver Args'
+    testsuite_mink_driver_args_webdriver:
+      type: text
+      label: 'Mink Driver Args Webdriver'
+    testsuite_loaded_test_types:
+      type: sequence
+      label: 'Enabled Test Types'
+      sequence:
+        type: string

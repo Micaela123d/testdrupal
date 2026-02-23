@@ -1,0 +1,24 @@
+phpstan_tests.confirm:
+  path: '/admin/reports/phpstan_tests/confirm'
+  defaults:
+    _form: '\Drupal\phpstan_tests\Form\PhpstanTestsClearLogConfirmForm'
+    _title: 'Confirm delete recent log messages'
+  requirements:
+    _permission: 'administer site configuration'
+
+phpstan_tests.phpstan_report:
+  path: '/admin/phpstan_tests/reports'
+  defaults:
+    _controller: '\Drupal\phpstan_tests\Controller\PhpstanTestsController::overview'
+    _title: 'PHPStan Tests Report'
+  requirements:
+    _permission: 'administer site configuration'
+
+phpstan_tests.event:
+  path: '/admin/phpstan_tests/reports/event/{event_id}'
+  defaults:
+    _controller: '\Drupal\phpstan_tests\Controller\PhpstanTestsController::eventDetails'
+    _title: 'Details'
+  requirements:
+    _permission: 'administer site configuration'
+    event_id: '[0-9]+'

@@ -1,0 +1,4 @@
+services:
+  user_geo_client.getAddress:
+    class: Drupal\user_geo_address\Services\UserGeoClient
+    arguments: ['@config.factory', '@http_client', '@cache.data']

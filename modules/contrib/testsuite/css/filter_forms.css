@@ -1,0 +1,39 @@
+#testsuite-tests-filter-form-wrapper {
+  display: flex;
+}
+
+#testsuite-tests-name-container,
+#testsuite-tests-types-container,
+#testsuite-tests-areas-container,
+#testsuite-tests-levels-container,
+#testsuite-tests-modules-container,
+#testsuite-tests-directories-container,
+#testsuite-tests-container,
+#testsuite-tests-if-vulnerabilities-container,
+#testsuite-tests-vendors-container {
+  margin-left: 10px;
+}
+
+.testsuite-text-right {
+  text-align: right;
+}
+
+.testsuite-green {
+  color: #325e1c;
+}
+
+.testsuite-orange {
+  color: #734c00;
+}
+
+.testsuite-red {
+  color: rgb(165, 27, 0);
+}
+
+.testsuite-blue {
+  color: #1e5c90;
+}
+
+.testsuite-margin-bottom-10 {
+  margin-bottom: 10px;
+}

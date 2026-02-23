@@ -1,0 +1,33 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * @file
+ * Provides functionality for handling postal addresses.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function user_geo_address_theme($existing, $type, $theme, $path) {
+  return [
+    'user_geo_address' => [
+      'template' => 'user-geo-address',
+      'variables' => [],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_help().
+ */
+function user_geo_address_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.user_geo_address':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t("This module provides users with geographical location using latitude and longitude.") . '</p>';
+      return $output;
+  }
+}

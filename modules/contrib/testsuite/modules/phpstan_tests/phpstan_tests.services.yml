@@ -1,0 +1,8 @@
+services:
+  phpstan_tests.load_resource.service:
+    class: Drupal\phpstan_tests\PhpstanTestsResourceService
+    arguments: ['@file_system', '@serialization.json']
+
+  phpstan_tests.file_resource.service:
+    class: Drupal\phpstan_tests\PhpstanTestsFileResourceService
+    arguments: ['@messenger', '@file_system']

@@ -1,0 +1,99 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the PHPCs Tests module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function phpcs_tests_schema() {
+  if (\Drupal::database()->schema()->tableExists('phpcs_test_item')) {
+    \Drupal::database()->truncate('phpcs_test_item')->execute();
+    \Drupal::database()->schema()->dropTable('phpcs_test_item');
+  }
+
+  $schema['phpcs_test_item'] = [
+    'description' => 'Stores the phpcs test items.',
+    'fields' => [
+      'id' => [
+        'description' => 'The ID of this item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'area' => [
+        'description' => 'Core, Contrib or Custom',
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => TRUE,
+      ],
+      'module' => [
+        'description' => 'The module',
+        'type' => 'varchar',
+        'length' => 180,
+        'not null' => TRUE,
+      ],
+      'line_number' => [
+        'description' => 'The line number of the error',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'file_checked' => [
+        'description' => 'The file checked',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'error_type' => [
+        'description' => 'The error type',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+      ],
+      'severity' => [
+        'description' => 'The severity of the error',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ],
+      'error_report' => [
+        'description' => 'The error reported',
+        'type' => 'text',
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'A timestamp indicating when the item was created',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'indexing' => ['id', 'created'],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function phpcs_tests_uninstall() {
+  // Delete tables.
+  if (\Drupal::database()->schema()->tableExists('phpcs_test_item')) {
+    \Drupal::database()->truncate('phpcs_test_item')->execute();
+    \Drupal::database()->schema()->dropTable('phpcs_test_item');
+  }
+
+  // Delete sessions.
+  if (\Drupal::request()->hasSession()) {
+    \Drupal::request()->getSession()->remove('phpcs_tests_overview_filter');
+  }
+
+  // Delete config in key values.
+  \Drupal::keyValue("system.schema")->delete("phpcs_tests");
+}

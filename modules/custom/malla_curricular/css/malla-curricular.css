@@ -1,0 +1,729 @@
+/* ===== PALETA DE COLORES FORMAL ACADÉMICA ===== */
+:root {
+    --primary: #2C3E50;      /* Azul oscuro - cabeceras */
+    --secondary: #34495E;    /* Gris azulado */
+    --light: #ECF0F1;        /* Gris muy claro - fondos alternos */
+    --white: #FFFFFF;        /* Blanco - fondo principal */
+    --border: #7F8C8D;       /* Gris formal - bordes */
+    --text: #2C3E50;         /* Texto principal */
+    --border-light: #566573; /* Bordes claros */
+    --border-soft: #D5DBDB;  /* Bordes suaves */
+    --accent: #D5DBDB;       /* Acento para totales */
+}
+
+/* ===== ESTILOS GENERALES ===== */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+}
+
+/* ===== FIELDSETS ===== */
+fieldset.carrera-info,
+fieldset.malla-semestres,
+fieldset.resumen-general {
+    border: 1px solid var(--border);
+    padding: 0;
+    margin: 0 0 30px 0;
+    background: var(--white);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+fieldset.carrera-info > legend,
+fieldset.malla-semestres > legend,
+fieldset.resumen-general > legend {
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--secondary);
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+fieldset.carrera-info > legend i,
+fieldset.malla-semestres > legend i,
+fieldset.resumen-general > legend i {
+    color: var(--light);
+    margin-right: 10px;
+}
+
+/* ===== TABLA PRINCIPAL DE CARRERAS ===== */
+.table-wrapper {
+    background: var(--white);
+    border: 1px solid var(--border);
+    margin: 30px 0;
+}
+
+.table-header {
+    background: var(--primary);
+    padding: 15px 20px;
+    border-bottom: 2px solid var(--secondary);
+    text-align: left;
+}
+
+.table-header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.table-header h2 i {
+    color: var(--light);
+    margin-right: 10px;
+}
+
+/* ----- Tabla de carreras ----- */
+.carreras-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+}
+
+.carreras-table thead tr {
+    background: var(--primary);
+    border-bottom: 2px solid var(--secondary);
+}
+
+.carreras-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--white);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-right: 1px solid var(--border-light);
+}
+
+.carreras-table th:last-child { border-right: none; }
+.carreras-table th i {
+    margin-right: 8px;
+    color: var(--light);
+    font-size: 0.9rem;
+}
+
+.carreras-table tbody tr {
+    border-bottom: 1px solid var(--border-soft);
+}
+.carreras-table tbody tr:hover { background: var(--light); }
+.carreras-table tbody tr:nth-child(even) { background: var(--light); }
+
+.carreras-table td {
+    padding: 12px 15px;
+    color: var(--text);
+    vertical-align: middle;
+    font-weight: 400;
+    border-right: 1px solid #EAEDED;
+    font-size: 0.95rem;
+}
+.carreras-table td:last-child { border-right: none; }
+
+/* ----- Elementos de tabla SIN CUADROS ----- */
+.carrera-name-cell {
+    font-weight: 600;
+    color: var(--primary) !important;
+}
+
+.carrera-icon {
+    display: inline-block;
+    width: 18px;
+    text-align: center;
+    margin-right: 8px;
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+.codigo-cell { 
+    font-family: 'Courier New', Courier, monospace; 
+    font-weight: 600; 
+}
+
+.codigo-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+.semestre-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+    font-weight: 500;
+}
+.semestre-count i { color: var(--primary); }
+
+.creditos-totales {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+    font-weight: 600;
+}
+.creditos-totales i { color: var(--primary); }
+
+.horas-totales {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ----- Botones ----- */
+.btn-view-malla {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: var(--primary);
+    color: var(--white) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid var(--secondary);
+}
+.btn-view-malla:hover {
+    background: var(--secondary);
+    color: var(--white) !important;
+    text-decoration: none;
+}
+.btn-view-malla i { font-size: 0.8rem; }
+
+/* ----- Footer de tabla ----- */
+.table-footer {
+    background: var(--light);
+    padding: 12px 20px;
+    border-top: 2px solid var(--border);
+    color: var(--primary);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.carrera-count {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.carrera-count i { color: var(--primary); }
+
+/* ===== INFORMACIÓN DE CARRERA ===== */
+.carrera-details { padding: 20px; }
+
+.carrera-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    background: var(--light);
+    padding: 15px;
+    border: 1px solid var(--border-soft);
+    border-left: 4px solid var(--primary);
+}
+
+.detail-item .detail-label {
+    font-size: 0.8rem;
+    color: #566573;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.detail-item .detail-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.detail-item i {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+/* ===== BADGES DE ESTADÍSTICAS SIN CUADROS ===== */
+.stats-badges {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-badge {
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    background: var(--light);
+    color: var(--primary);
+    border-left: 3px solid var(--primary);
+}
+.stat-badge i { margin-right: 8px; }
+
+.stat-badge.General {
+    background: var(--light);
+    color: var(--primary);
+    border-left-color: var(--primary);
+}
+
+.stat-badge.Especifico {
+    background: var(--light);
+    color: var(--primary);
+    border-left-color: var(--secondary);
+}
+
+.stat-badge.especialidad {
+    background: var(--light);
+    color: var(--primary);
+    border-left-color: var(--border);
+}
+.stat-badge.especialidad i { color: var(--primary); }
+
+/* ===== CONTENEDORES DE SEMESTRE ===== */
+.semestre-wrapper {
+    background: var(--white);
+    border: 1px solid var(--border);
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.semestre-header {
+    background: var(--primary);
+    padding: 12px 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--secondary);
+}
+
+.semestre-header i {
+    margin-right: 12px;
+    color: var(--light);
+    font-size: 1rem;
+}
+
+.semestre-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+/* ===== TABLAS DE CURSOS SIN CUADROS ===== */
+.semestre-cursos-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+}
+
+.semestre-cursos-table thead tr {
+    background: var(--secondary);
+    border-bottom: 2px solid var(--primary);
+}
+
+.semestre-cursos-table th {
+    padding: 10px 12px;
+    text-align: left;
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-right: 1px solid var(--border-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.semestre-cursos-table th:last-child { border-right: none; }
+
+.semestre-cursos-table tbody tr {
+    border-bottom: 1px solid var(--border-soft);
+}
+.semestre-cursos-table tbody tr:hover { background: var(--light); }
+.semestre-cursos-table tbody tr:nth-child(even) { background: var(--light); }
+
+.semestre-cursos-table td {
+    padding: 10px 12px;
+    color: var(--text);
+    border-right: 1px solid #EAEDED;
+    font-weight: 400;
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+.semestre-cursos-table td:last-child { border-right: none; }
+
+/* ===== ELEMENTOS DE TABLA DE CURSOS SIN CUADROS ===== */
+.orden-numero {
+    display: inline-block;
+    width: 28px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.codigo-curso {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.credito-valor {
+    font-weight: 700;
+}
+
+/* ----- Valores de horas ----- */
+.hora-valor {
+    font-weight: 600;
+}
+
+.hora-teorica { font-weight: 600; }
+.hora-practica { font-weight: 600; }
+.hora-total {
+    font-weight: 700;
+}
+
+/* ----- Badges de tipo ----- */
+.tipo-badge {
+    text-transform: uppercase;
+}
+
+/* ----- HV (Horas Virtuales) ----- */
+.hv-numero {
+    font-weight: 600;
+}
+
+.hv-none {
+    font-style: italic;
+}
+
+/* ----- Prerrequisitos ----- */
+.prerrequisito-badge {
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.prerrequisito-none {
+    font-style: italic;
+}
+
+.curso-nombre { font-weight: 600; color: var(--primary); }
+
+/* ===== SEMESTRE VACÍO ===== */
+.semestre-vacio {
+    padding: 30px;
+    text-align: center;
+    color: #566573;
+    font-size: 1rem;
+    font-weight: 500;
+    background: var(--light);
+    border-top: 1px solid var(--border-soft);
+    font-style: italic;
+}
+.semestre-vacio i {
+    color: var(--border);
+    margin-right: 8px;
+}
+
+/* ===== FOOTER DE SEMESTRE ===== */
+.semestre-footer {
+    background: var(--light);
+    padding: 12px 20px;
+    border-top: 2px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.footer-left,
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-left span,
+.footer-right span {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.semestre-footer i {
+    margin-right: 6px;
+    color: var(--primary);
+}
+
+/* ===== UTILIDADES ===== */
+.table-responsive { overflow-x: auto; }
+.semestres-container { padding: 0; }
+
+/* ===== RESUMEN GENERAL ===== */
+.resumen-content { padding: 0; }
+
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.resumen-card {
+    background: var(--light);
+    border: 1px solid var(--border-soft);
+    padding: 15px;
+    border-left: 4px solid var(--primary);
+}
+
+.resumen-card .resumen-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.resumen-card .resumen-numero {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.resumen-card .resumen-etiqueta {
+    color: #566573;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.resumen-card .resumen-detalle {
+    font-size: 0.8rem;
+    color: var(--primary);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-soft);
+}
+
+/* ===== TOTALES GENERALES ===== */
+.totales-generales {
+    background: var(--primary);
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: 2px solid var(--secondary);
+}
+
+.totales-info { color: white; }
+.totales-info h4 {
+    margin: 0 0 5px 0;
+    color: white;
+    font-size: 1.1rem;
+}
+.totales-info p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.totales-stats {
+    display: flex;
+    gap: 25px;
+}
+
+.totales-stat { text-align: center; }
+.totales-stat .stat-valor {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--light);
+    line-height: 1;
+}
+.totales-stat .stat-etiqueta {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+}
+
+/* ===== ENLACE PARA VOLVER ===== */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 25px;
+    border: 1px solid var(--secondary);
+}
+
+.back-link:hover {
+    background: var(--secondary);
+    color: white;
+    text-decoration: none;
+}
+.back-link i { font-size: 0.9rem; }
+
+/* ===== SUBTÍTULOS HT, HP, TH ===== */
+.semestre-cursos-table thead tr th[colspan="3"] {
+    position: relative;
+    padding-bottom: 30px;
+    vertical-align: bottom;
+    background-color: var(--secondary);
+    text-align: center;
+}
+
+.semestre-cursos-table thead tr th[colspan="3"]::after {
+    content: "HT    HP    TH";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background-color: var(--primary);
+    padding: 3px 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    letter-spacing: 2px;
+    z-index: 10;
+}
+
+/* ===== NUEVA COLUMNA CONDICIÓN ===== */
+.condicion-header {
+    text-align: center;
+    background: var(--secondary);
+    color: white;
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border-right: 1px solid var(--border-light);
+}
+
+.condicion-badge {
+    text-transform: uppercase;
+}
+
+/* Estilo específico para Electivo (opcional) */
+.condicion-badge:contains("Electivo") {
+    color: #E67E22;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .table-wrapper,
+    .carrera-info,
+    .semestre-wrapper {
+        margin: 15px;
+    }
+    
+    .table-header,
+    .semestre-header {
+        padding: 10px 15px;
+    }
+    
+    .table-header h2 { font-size: 1.3rem; }
+    .semestre-header h3 { font-size: 1rem; }
+    
+    .carreras-table,
+    .semestre-cursos-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .carreras-table th,
+    .carreras-table td,
+    .semestre-cursos-table th,
+    .semestre-cursos-table td {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .table-footer,
+    .semestre-footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .carrera-details-grid,
+    .resumen-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .totales-generales {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .stats-badges { justify-content: center; }
+    .footer-left, .footer-right { justify-content: center; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .btn-view-malla,
+    .back-link,
+    .btn-download { display: none !important; }
+    
+    .carreras-table,
+    .semestre-cursos-table { border: 1px solid #000; }
+    
+    .table-header,
+    .semestre-header,
+    .carrera-info > legend,
+    .malla-semestres > legend,
+    .resumen-general > legend {
+        background: #000 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* ===== BOTÓN DE DESCARGA ===== */
+.btn-download {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 12px 24px;
+    background: #27AE60;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid #229954;
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,8 @@
+testsuite.view_logs:
+  title: 'View'
+  route_name: testsuite.custom_report
+  base_route: testsuite.custom_report
+testsuite.clear_logs:
+  title: 'Delete'
+  route_name: testsuite.confirm
+  base_route: testsuite.custom_report

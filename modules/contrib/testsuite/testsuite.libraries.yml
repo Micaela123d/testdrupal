@@ -1,0 +1,17 @@
+testsuite.filters:
+  version: 1.x
+  css:
+    theme:
+      css/filter_forms.css: {}
+
+testsuite.claro:
+  version: 1.x
+  css:
+    theme:
+      css/claro_theme.css: {}
+
+testsuite.seven:
+  version: 1.x
+  css:
+    theme:
+      css/seven_theme.css: {}

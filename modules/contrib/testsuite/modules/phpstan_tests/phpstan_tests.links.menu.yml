@@ -1,0 +1,6 @@
+phpstan_tests.tests:
+  title: 'PHPStan'
+  description: 'Test Suite PHPStan page.'
+  parent: testsuite.tests.collection
+  route_name: phpstan_tests.phpstan_report
+  weight: 10

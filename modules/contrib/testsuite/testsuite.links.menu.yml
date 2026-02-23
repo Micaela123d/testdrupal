@@ -1,0 +1,20 @@
+testsuite.admin_config_testsuite:
+  title: 'TestSuite Config'
+  route_name: testsuite.admin_config_testsuite
+  parent: system.admin_config
+  description: 'Configure and use test suite tools.'
+  weight: -10
+
+testsuite.tests.collection:
+  title: 'TestSuite Reports'
+  description: 'Test Suite configuration page.'
+  route_name: testsuite.admin_config_testsuite
+  parent: system.admin_reports
+  weight: -5
+
+testsuite.tests:
+  title: 'Custom Tests'
+  description: 'Test Suite Custom Tests page.'
+  parent: testsuite.tests.collection
+  route_name: testsuite.custom_report
+  weight: -10

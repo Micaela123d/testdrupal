@@ -1,0 +1,6 @@
+phpcs_tests.tests:
+  title: 'PHPCS'
+  description: 'Test Suite PHPCS page.'
+  parent: testsuite.tests.collection
+  route_name: phpcs_tests.phpcs_report
+  weight: 5

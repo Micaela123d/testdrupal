@@ -1,0 +1,12 @@
+services:
+  phpunit_tests.load_resource.service:
+    class: Drupal\phpunit_tests\PhpunitTestsResourceService
+    arguments: ['@file_system']
+
+  phpunit_tests.repository.service:
+    class: Drupal\phpunit_tests\PhpunitTestsRepositoryService
+    arguments: ['@database', '@datetime.time']
+
+  phpunit_tests.file_resource.service:
+    class: Drupal\phpunit_tests\PhpunitTestsFileResourceService
+    arguments: ['@messenger', '@file_system']

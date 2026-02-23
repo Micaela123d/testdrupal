@@ -1,0 +1,8 @@
+services:
+  testsuite.load_resource.service:
+    class: Drupal\testsuite\CustomTestsResourceService
+    arguments: ['@file_system']
+
+  testsuite.guzzle.service:
+    class: Drupal\testsuite\GuzzleService
+    arguments: ['@http_client']

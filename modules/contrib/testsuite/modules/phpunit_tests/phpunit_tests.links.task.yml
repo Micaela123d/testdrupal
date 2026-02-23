@@ -1,0 +1,16 @@
+phpunit_tests.view_logs:
+  title: 'View'
+  route_name: phpunit_tests.phpunit_report
+  base_route: phpunit_tests.phpunit_report
+phpunit_tests.clear_logs:
+  title: 'Delete'
+  route_name: phpunit_tests.confirm
+  base_route: phpunit_tests.phpunit_report
+phpunit_tests.view_group_logs:
+  title: 'View'
+  route_name: phpunit_tests.group_report
+  base_route: phpunit_tests.group_report
+phpunit_tests.clear_group_logs:
+  title: 'Delete'
+  route_name: phpunit_tests.group_confirm
+  base_route: phpunit_tests.group_report

@@ -1,0 +1,14 @@
+user_geo_address.settings:
+  path: '/admin/config/services/usergeoaddress'
+  defaults:
+    _form: '\Drupal\user_geo_address\Form\APIConfiguration'
+    _title: 'User Geo Address API Settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+user_geo_address.location:
+  path: '/get-address/{latitude}/{longitude}'
+  defaults:
+    _controller: '\Drupal\user_geo_address\Controller\GeoLocation::getUserLocation'
+  requirements:
+    _permission: 'access content'
