@@ -7,7 +7,7 @@
  https://www.drupal.org/node/2116263 for details.
 -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         bootstrap="tests/bootstrap.php" colors="true"
+         bootstrap="core/tests/bootstrap.php" colors="true"
          beStrictAboutTestsThatDoNotTestAnything="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutChangesToGlobalState="true"
@@ -32,7 +32,7 @@
      you can set the base URL used in the browser test output links to something
      reachable from your host machine here. This will allow you to follow them
      directly and view the output. -->
-    <env name="BROWSERTEST_OUTPUT_BASE_URL" value="https://127.0.0.1/drupal"/>
+    <env name="BROWSERTEST_OUTPUT_BASE_URL" value="http://127.0.0.1/drupal"/>
 
     <!-- Deprecation testing is managed through Symfony's PHPUnit Bridge.
       The environment variable SYMFONY_DEPRECATIONS_HELPER is used to configure
@@ -62,19 +62,19 @@
   </php>
   <testsuites>
     <testsuite name="unit">
-      <file>./tests/TestSuites/UnitTestSuite.php</file>
+      <file>./core/tests/TestSuites/UnitTestSuite.php</file>
     </testsuite>
     <testsuite name="kernel">
-      <file>./tests/TestSuites/KernelTestSuite.php</file>
+      <file>./core/tests/TestSuites/KernelTestSuite.php</file>
     </testsuite>
     <testsuite name="functional">
-      <file>./tests/TestSuites/FunctionalTestSuite.php</file>
+      <file>./core/tests/TestSuites/FunctionalTestSuite.php</file>
     </testsuite>
     <testsuite name="functional-javascript">
-      <file>./tests/TestSuites/FunctionalJavascriptTestSuite.php</file>
+      <file>./core/tests/TestSuites/FunctionalJavascriptTestSuite.php</file>
     </testsuite>
     <testsuite name="build">
-      <file>./tests/TestSuites/BuildTestSuite.php</file>
+      <file>./core/tests/TestSuites/BuildTestSuite.php</file>
     </testsuite>
   </testsuites>
   <listeners>
