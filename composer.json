@@ -35,6 +35,11 @@
     "conflict": {
         "drupal/drupal": "*"
     },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\plan_de_estudios\\": "modules/custom/plan_de_estudios/src/"
+        }
+    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {

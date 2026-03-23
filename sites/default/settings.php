@@ -809,10 +809,6 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  *
  * Keep this code block at the end of this file to take full effect.
  */
-#
-# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-#   include $app_root . '/' . $site_path . '/settings.local.php';
-# }
 $databases['default']['default'] = array (
   'database' => 'drupal1',
   'username' => 'root',
@@ -823,5 +819,14 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
   'driver' => 'mysql',
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+  'isolation_level' => 'READ COMMITTED',
 );
 $settings['config_sync_directory'] = 'sites/default/files/config_uOOJs29VNLhMe0GAlo8jqVOQ0wSFZJn7hhf2wBRZwHuTQ9XuRD5FyEqh-66rjbUCb9xMFQvCoQ/sync';
+
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+$settings['trusted_host_patterns'] = [
+  '^localhost$',
+];
+$settings['state_cache'] = TRUE;

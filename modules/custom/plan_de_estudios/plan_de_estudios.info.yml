@@ -1,0 +1,9 @@
+name: 'Plan de Estudios'
+type: module
+description: 'Módulo para la visualización y descarga de planes de estudios universitarios (programas)'
+core_version_requirement: ^9 || ^10
+package: 'Custom'
+dependencies:
+  - drupal:system
+  - drupal:block
+  - drupal:block_content

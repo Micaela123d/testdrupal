@@ -1,0 +1,30 @@
+# Estilos principales del plan de estudios
+styles:
+  version: 1.x
+  css:
+    theme:
+      css/plan-de-estudios.css: {}
+      
+
+# Iconos de Font Awesome
+font-awesome:
+  version: 5.15.4
+  css:
+    theme:
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css: { type: external, minified: true }
+
+# Fuente Open Sans
+open-sans:
+  version: 1.0
+  css:
+    theme:
+      https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap: { type: external, minified: true }
+
+# Script para el comportamiento del bloque
+block-js:
+  version: 1.0
+  js:
+    js/block-toggle.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

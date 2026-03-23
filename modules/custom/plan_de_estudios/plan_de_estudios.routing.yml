@@ -1,0 +1,20 @@
+# Definición de rutas para el módulo Plan de Estudios.
+# El acceso principal es a través de un bloque dinámico.
+
+# Ruta para visualizar el detalle completo de un programa/plan.
+plan_de_estudios.programa:
+  path: '/plan-de-estudios/{id_programa}'
+  defaults:
+    _controller: 'Drupal\plan_de_estudios\Controller\PlanDeEstudiosController::programaDetail'
+    _title: 'Plan de Estudios'
+  requirements:
+    _permission: 'access content'
+
+# Ruta para la generación y descarga automática del PDF.
+plan_de_estudios.descargar_pdf:
+  path: '/plan-de-estudios/descargar/{id_programa}'
+  defaults:
+    _controller: 'Drupal\plan_de_estudios\Controller\PlanDeEstudiosController::descargarPdf'
+    _title: 'Descargar PDF'
+  requirements:
+    _permission: 'access content'

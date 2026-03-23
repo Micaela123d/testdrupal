@@ -1,0 +1,10 @@
+vendor/
+core/
+composer-temp.phar
+find_recent_files.php
+sites/*/settings.php
+sites/*/files/
+/2
+/3
+/4
+.git/

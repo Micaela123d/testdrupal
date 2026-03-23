@@ -1,0 +1,583 @@
+/* ===== PALETA DE COLORES PERSONALIZADA ===== */
+:root {
+    --primary: #316C9E;
+    --primary-alt: #2c628f;
+    --primary-soft: #e8f0f8;
+    --primary-soft-border: #d1e1f1;
+    --gray-slate: #64748B;
+    --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--gray-slate) 100%);
+    --accent: var(--primary);
+    --bg-main: #f4f6f8;
+    --white: #FFFFFF;
+    --text: #2c3e50;
+    --text-muted: #7f8c8d;
+    --border: #C0C0C0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
+}
+
+/* ===== BASE ===== */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+}
+
+h1.page-title {
+    font-size: 2rem !important;
+    margin-bottom: 25px;
+}
+
+/* ===== LAYOUT: FIELDSETS COMO CARDS ===== */
+fieldset.programa-info,
+fieldset.plan-semestres,
+fieldset.resumen-general {
+    border: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+fieldset.programa-info>legend,
+fieldset.plan-semestres>legend,
+fieldset.resumen-general>legend {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 16px 24px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    width: 100%;
+    margin: 0;
+    float: left;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+/* ===== INFORMACIÓN DE PROGRAMA (UNIFIED CARD STYLE) ===== */
+.programa-details {
+    padding: 24px;
+}
+
+.programa-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    background: var(--white);
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.detail-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 4px 0 0 4px;
+}
+
+.detail-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.detail-item i {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.detail-item .detail-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.detail-item .detail-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+/* ===== CONTENEDORES DE SEMESTRE (USER STYLE) ===== */
+.semestre-wrapper {
+    background: var(--white);
+    margin-bottom: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.semestre-header {
+    background: #FFFFFF;
+    padding: 18px 24px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.semestre-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--primary-gradient);
+}
+
+.semestre-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+}
+
+/* ===== TABLAS DE CURSOS (USER STYLE) ===== */
+.semestre-cursos-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+}
+
+.semestre-cursos-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: #5D6D7E;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 2px solid var(--border);
+    background: #f8f9fa;
+}
+
+.horas-agrupadas-header {
+    text-align: center !important;
+    background: var(--primary-soft) !important;
+    color: var(--primary) !important;
+    border-bottom: 2px solid var(--primary) !important;
+}
+
+.semestre-cursos-table td {
+    vertical-align: middle;
+    padding: 18px 20px;
+    color: #2C3E50;
+    border-bottom: 1px solid var(--border);
+}
+
+.semestre-cursos-table td:nth-child(5),
+.semestre-cursos-table td:nth-child(6),
+.semestre-cursos-table td:nth-child(7) {
+    background-color: rgba(232, 240, 248, 0.5);
+    text-align: center;
+}
+
+.semestre-cursos-table tbody tr:nth-child(even) {
+    background-color: #fbfbfc;
+}
+
+.semestre-cursos-table tbody tr:hover {
+    background: var(--bg-main);
+}
+
+.orden-numero {
+    font-weight: 700;
+}
+
+.curso-nombre {
+    font-weight: 600;
+    color: #2C3E50;
+}
+
+.codigo-curso {
+    font-weight: 500;
+    color: #5D6D7E;
+}
+
+.credito-valor,
+.hora-valor,
+.hv-numero {
+    font-weight: 600;
+}
+
+.prerrequisito-badge {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* HT HP TH grouped subheader using provided content */
+.semestre-cursos-table thead tr th[colspan="3"] {
+    position: relative;
+    padding-bottom: 30px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.semestre-cursos-table thead tr th[colspan="3"]::after {
+    content: "HT    HP    TH";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background: var(--primary-gradient);
+    padding: 3px 0;
+    letter-spacing: 2px;
+}
+
+/* ===== FOOTER DE SEMESTRE (USER STYLE) ===== */
+.semestre-footer {
+    background: var(--bg-main);
+    padding: 12px 20px;
+    border-top: 2px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-label {
+    text-transform: uppercase;
+    color: #5D6D7E !important;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.footer-value {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.acumulado-badge {
+    background: var(--primary-soft);
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--primary-soft-border);
+}
+
+.acumulado-valor {
+    color: var(--primary);
+    font-weight: 500; /* Number is now not bold */
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+/* Resumen General (UNIFIED CARD STYLE) */
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 24px;
+}
+
+.resumen-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: var(--radius);
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.resumen-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.resumen-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 4px 0 0 4px;
+}
+
+.resumen-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.resumen-numero {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.resumen-etiqueta {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.resumen-detalle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--bg-main);
+    font-weight: 600;
+}
+
+/* ===== PREMIUM BUTTONS (PRESERVED) ===== */
+.back-link,
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background: var(--primary-gradient);
+    color: white !important;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 99px;
+    /* Pill shape */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(49, 108, 158, 0.25);
+    margin-right: 15px;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    border: none;
+}
+
+.back-link:hover,
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(49, 108, 158, 0.4);
+    background: linear-gradient(135deg, var(--primary-alt) 0%, var(--primary) 100%);
+}
+
+.back-link i,
+.btn-download i {
+    font-size: 1.1rem;
+}
+
+/* ===== BLOQUE MI PROGRAMA (PRESERVED BANNER) ===== */
+.block-plan-de-estudios {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    border: none;
+}
+
+.program-block-banner {
+    background: var(--primary-gradient);
+    padding: 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.program-block-banner:hover {
+    filter: brightness(1.1);
+}
+
+.toggle-icon {
+    font-size: 1.2rem;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.block-plan-de-estudios.is-expanded .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.program-block-banner::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.program-title-main {
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.program-subtitle-main {
+    display: none; /* Deprecated, removed from PHP */
+}
+
+/* Legacy Banner Stats - Deprecated/Removed */
+/* .banner-right, .banner-stat, .stat-number, .stat-label removed */
+
+.plans-collapsible-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #f4f7f9; /* Soft contrast background restored */
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.planes-disponibles-label {
+    padding: 24px 24px 10px;
+    font-size: 0.8rem;
+    color: #718096;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.plans-list-container {
+    padding: 0 24px 24px;
+}
+
+.plan-card-item {
+    margin-bottom: 16px;
+    background: var(--white);
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.plan-card-body {
+    padding: 15px 20px; /* Restoring original compact padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plan-name {
+    font-weight: 700;
+    color: #2D3748;
+    font-size: 0.95rem;
+}
+
+.btn-ingresar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white !important;
+    text-decoration: none;
+    background: var(--primary-gradient);
+    padding: 10px 20px;
+    border-radius: 99px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    border: none;
+}
+
+.btn-ingresar:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, var(--primary-alt) 0%, var(--primary) 100%);
+}
+
+/* Case for no courses in semester */
+.semestre-vacio {
+    padding: 40px;
+    text-align: center;
+    background: var(--white);
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.semestre-vacio i {
+    font-size: 2rem;
+    color: var(--primary-soft-border);
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Responsive and Helper Classes */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 10px;
+}

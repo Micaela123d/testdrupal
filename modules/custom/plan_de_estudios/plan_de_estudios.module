@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Contiene ganchos (hooks) para el módulo Plan de Estudios.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function plan_de_estudios_theme($existing, $type, $theme, $path) {
+  return [];
+}

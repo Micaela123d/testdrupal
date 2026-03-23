@@ -1,6 +1,0 @@
-malla_curricular.display:
-  title: 'Malla Curricular'
-  description: 'Ver mallas curriculares de carreras'
-  parent: system.main  # Menú principalS
-  route_name: malla_curricular.display
-  weight: 100
